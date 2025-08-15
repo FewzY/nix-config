@@ -13,8 +13,8 @@
       enable = true;
       # AMD integrated graphics packages
       extraPackages = with pkgs; [
-        rocm-opencl-icd
-        rocm-opencl-runtime
+        # rocmPackages.clr.icd  # Uncomment if you need OpenCL support
+        # rocmPackages.rocm-runtime  # Uncomment if you need ROCm support
         amdvlk
       ];
       # For 32-bit applications
@@ -108,9 +108,9 @@
     glances
     hdparm
     smartmontools
-    cpufrequtils
+    # cpufrequtils  # Might be renamed or unavailable
     powertop
     lm_sensors  # For temperature monitoring
-    ryzen-monitor-ng  # Ryzen-specific monitoring
+    # ryzen-monitor-ng  # Ryzen-specific monitoring - uncomment if available
   ];
 }
