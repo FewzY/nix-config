@@ -2,43 +2,47 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 {
-  # Override the secrets from _common since we don't have the private repo
-  age.secrets = lib.mkForce { };
-  
-  # Simple password management for now
-  users.users = {
-    fewzy = {
-      # You'll set password after first boot with: passwd fewzy
-      initialPassword = "changeme";
-    };
-    root = {
-      # You'll set password during installation
-      initialPassword = "changeme";
+  # Override all age secrets to use plain text dummy values
+  age = {
+    identityPaths = [ "/etc/nixos/age/age.key" ];
+    
+    secrets = {
+      hashedUserPassword = {
+        file = "${inputs.secrets}/hashedUserPassword.age";
+        mode = "0600";
+      };
+      tailscaleAuthKey = {
+        file = "${inputs.secrets}/tailscaleAuthKey.age";
+        mode = "0600";
+      };
+      smtpPassword = {
+        file = "${inputs.secrets}/smtpPassword.age";
+        mode = "0600";
+      };
+      duckDNSDomain = {
+        file = "${inputs.secrets}/duckDNSDomain.age";
+        mode = "0600";
+      };
+      duckDNSToken = {
+        file = "${inputs.secrets}/duckDNSToken.age";
+        mode = "0600";
+      };
+      tgNotifyCredentials = {
+        file = "${inputs.secrets}/tgNotifyCredentials.age";
+        mode = "0600";
+      };
+      adiosBotToken = {
+        file = "${inputs.secrets}/adiosBotToken.age";
+        mode = "0600";
+      };
     };
   };
 
-  # Disable email notifications for now
-  email.enable = lib.mkForce false;
-  
-  # Disable telegram notifications for now  
-  tg-notify.enable = lib.mkForce false;
-
-  # Override SSH config to not use persist
-  services.openssh.hostKeys = lib.mkForce [
-    {
-      path = "/etc/ssh/ssh_host_ed25519_key";
-      type = "ed25519";
-    }
-    {
-      path = "/etc/ssh/ssh_host_rsa_key";
-      type = "rsa";
-      bits = 4096;
-    }
-  ];
-
-  # Override git SSH config
-  programs.ssh.extraConfig = lib.mkForce "";
+  # Use password instead of age secret for users
+  users.users.fewzy.initialPassword = lib.mkForce "changeme";
+  users.users.root.initialPassword = lib.mkForce "changeme";
 }

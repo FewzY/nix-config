@@ -59,7 +59,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     secrets = {
-      url = "git+ssh://git@github.com/notthebee/nix-private.git";
+      url = "path:/mnt/etc/nixos/secrets";
       flake = false;
     };
     jovian = {

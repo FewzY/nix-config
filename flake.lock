@@ -535,17 +535,14 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1754064632,
-        "narHash": "sha256-gweRE/tGsWNmuDKFhq/IKpssSKSszkOYBLeOp8xVPKM=",
-        "ref": "refs/heads/main",
-        "rev": "93d655d57597e7277c241e3147186b59de4216e0",
-        "revCount": 72,
-        "type": "git",
-        "url": "ssh://git@github.com/notthebee/nix-private.git"
+        "lastModified": 1755245369,
+        "narHash": "sha256-Q8K0VJzxEsNzuXLrtt0Sdnji+BUP+46RKT003WErXQQ=",
+        "path": "/mnt/etc/nixos/secrets",
+        "type": "path"
       },
       "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/notthebee/nix-private.git"
+        "path": "/mnt/etc/nixos/secrets",
+        "type": "path"
       }
     },
     "systems": {

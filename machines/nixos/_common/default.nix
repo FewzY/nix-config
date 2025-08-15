@@ -6,9 +6,9 @@
   ...
 }:
 {
-  age.secrets.hashedUserPassword = {
-    file = "${inputs.secrets}/hashedUserPassword.age";
-  };
+#  age.secrets.hashedUserPassword = {
+#    file = "${inputs.secrets}/hashedUserPassword.age";
+#  };
 
   programs.ssh = {
     knownHosts = {
@@ -43,7 +43,7 @@
   imports = [
     ./filesystems
     ./nix
-    "${inputs.secrets}/networks.nix"
+ #   "${inputs.secrets}/networks.nix"
     ./secrets
   ];
 
