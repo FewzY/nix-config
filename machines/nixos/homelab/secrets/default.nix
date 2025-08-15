@@ -42,9 +42,7 @@
     };
   };
 
-  # Override only specific users, not all users
-  users.users.notthebee = lib.mkForce { };
-  users.groups.notthebee = lib.mkForce { };
-    
+  # Just set root password
   users.users.root.initialPassword = lib.mkForce "changeme";
+  users.users.fewzy.initialPassword = lib.mkForce "changeme";
 }
