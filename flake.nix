@@ -122,6 +122,11 @@
         ./homelab
         inputs.home-manager.nixosModules.home-manager
       ])
+      (mkNixos "homelab" inputs.nixpkgs [
+        ./modules/tailscale
+        ./homelab
+        inputs.home-manager.nixosModules.home-manager
+      ])
       (mkDarwin "meredith" inputs.nixpkgs-unstable
         [
           dots/tmux

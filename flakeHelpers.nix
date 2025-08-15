@@ -49,8 +49,9 @@ in
         ./modules/auto-aspm
         ./modules/mover
         inputs.agenix.nixosModules.default
-        ./users/notthebee
-        (homeManagerCfg false [ ])
+        # User module is now handled per-machine
+        (if machineHostname == "homelab" then ./users/fewzy else ./users/notthebee)
+        (if machineHostname == "homelab" then { } else (homeManagerCfg false [ ]))
       ] ++ extraModules;
     };
   };
