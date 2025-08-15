@@ -45,4 +45,10 @@
   # Just set root password
   users.users.root.initialPassword = lib.mkForce "changeme";
   users.users.fewzy.initialPassword = lib.mkForce "changeme";
+  
+  # Disable services that require real secrets
+  services.tailscale.enable = lib.mkForce false;
+  services.duckdns.enable = lib.mkForce false;
+  tg-notify.enable = lib.mkForce false;
+  email.enable = lib.mkForce false;
 }
