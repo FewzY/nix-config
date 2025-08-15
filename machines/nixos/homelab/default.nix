@@ -41,14 +41,14 @@
     kernelModules = [ "kvm-amd" ];  # AMD virtualization
   };
 
-  # Network configuration with static IP
+  # Network configuration with DHCP (for now)
   networking = {
     hostName = "homelab";
     
-    # Disable DHCP and set static IP
-    useDHCP = false;
+    # Use DHCP for simplicity during setup
+    useDHCP = true;
     
-    # WiFi configuration with static IP
+    # WiFi configuration
     wireless = {
       enable = true;
       networks = {
@@ -58,23 +58,10 @@
       };
     };
     
-    # Static IP configuration
-    interfaces.wlan0 = {  # Might be wlp2s0 or similar - will auto-detect
-      ipv4.addresses = [{
-        address = "192.168.2.100";
-        prefixLength = 24;
-      }];
-    };
-    
-    # Default gateway (your router)
-    defaultGateway = "192.168.2.1";  # Adjust if your router has different IP
-    
-    # DNS servers
-    # nameservers = [ "8.8.8.8" "8.8.4.4" ];  # Google DNS, or use your router
-    
     firewall = {
       enable = true;
       allowPing = true;
+      allowedTCPPorts = [ 69 ];  # SSH port
       trustedInterfaces = [
         "tailscale0"
         "docker0"

@@ -57,9 +57,9 @@
   services.openssh = {
     enable = lib.mkDefault true;
     settings = {
-      PasswordAuthentication = lib.mkDefault false;
+      PasswordAuthentication = lib.mkDefault true;  # Allow password during setup
       LoginGraceTime = 0;
-      PermitRootLogin = "no";
+      PermitRootLogin = "yes";  # Allow root login during setup
     };
     ports = [ 69 ];
     hostKeys = [
