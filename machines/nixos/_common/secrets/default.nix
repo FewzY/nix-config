@@ -12,8 +12,8 @@
       sambaPassword.file = "${inputs.secrets}/sambaPassword.age";
       smtpPassword = {
         file = "${inputs.secrets}/smtpPassword.age";
-        owner = "notthebee";
-        group = "notthebee";
+        owner = "fewzy";
+        group = "fewzy";
         mode = "0440";
       };
       cloudflareDnsApiCredentials.file = "${inputs.secrets}/cloudflareDnsApiCredentials.age";

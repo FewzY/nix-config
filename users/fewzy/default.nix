@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 {
@@ -9,7 +10,7 @@
     users = {
       fewzy = {
         shell = pkgs.zsh;
-        uid = 1000;
+        uid = lib.mkForce 1000;
         isNormalUser = true;
         extraGroups = [
           "wheel"
@@ -27,9 +28,10 @@
     };
     groups = {
       fewzy = {
-        gid = 1000;
+        gid = lib.mkForce 1000;
       };
     };
   };
   programs.zsh.enable = true;
 }
+

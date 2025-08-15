@@ -49,15 +49,11 @@
 
   time.timeZone = "Europe/Berlin";
 
-  users.users = {
-    notthebee = {
-      hashedPasswordFile = config.age.secrets.hashedUserPassword.path;
-    };
+   users.users = {
     root = {
-      initialHashedPassword = config.age.secrets.hashedUserPassword.path;
+      initialPassword = "changeme";
     };
   };
-
   services.openssh = {
     enable = lib.mkDefault true;
     settings = {
@@ -91,8 +87,8 @@
 
   email = {
     enable = true;
-    fromAddress = "moe@notthebe.ee";
-    toAddress = "server_announcements@mailbox.org";
+    fromAddress = "fewzy@outlook.com";
+    toAddress = "fapaydin@outlook.com";
     smtpServer = "email-smtp.eu-west-1.amazonaws.com";
     smtpUsername = "AKIAYYXVLL34J7LSXFZF";
     smtpPasswordPath = config.age.secrets.smtpPassword.path;

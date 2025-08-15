@@ -42,7 +42,9 @@
     };
   };
 
-  # Use password instead of age secret for users
-  users.users.fewzy.initialPassword = lib.mkForce "changeme";
+  # Override only specific users, not all users
+  users.users.notthebee = lib.mkForce { };
+  users.groups.notthebee = lib.mkForce { };
+    
   users.users.root.initialPassword = lib.mkForce "changeme";
 }

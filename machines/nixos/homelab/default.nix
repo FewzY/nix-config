@@ -86,7 +86,8 @@
   imports = [
     ./homelab  # Service configurations
     ./secrets  # Simplified secrets management
-  ];
+    ../../../hardware-configuration.nix 
+ ];
 
   # Docker storage driver (ext4 compatible)
   virtualisation.docker.storageDriver = "overlay2";
