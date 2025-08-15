@@ -47,6 +47,8 @@
     
     # Use DHCP for simplicity during setup
     useDHCP = true;
+    # Add DNS servers
+    nameservers = [ "8.8.8.8" "8.8.4.4" ];  # Google DNS
     
     # WiFi configuration
     wireless = {
