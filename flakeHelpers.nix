@@ -5,11 +5,11 @@ let
     home-manager.extraSpecialArgs = {
       inherit inputs;
     };
-    home-manager.users.fewzy.imports = [
+    home-manager.users.notthebee.imports = [
       inputs.agenix.homeManagerModules.default
       inputs.nix-index-database.homeModules.nix-index
-      ./users/fewzy/dots.nix
-      ./users/fewzy/age.nix
+      ./users/notthebee/dots.nix
+      ./users/notthebee/age.nix
     ] ++ extraImports;
     home-manager.backupFileExtension = "bak";
     home-manager.useUserPackages = userPackages;
@@ -29,7 +29,7 @@ in
         ./machines/darwin/${machineHostname}
         inputs.home-manager-unstable.darwinModules.home-manager
         (nixpkgsVersion.lib.attrsets.recursiveUpdate (homeManagerCfg true extraHmModules) {
-          home-manager.users.fewzy.home.homeDirectory = nixpkgsVersion.lib.mkForce "/Users/fewzy";
+          home-manager.users.notthebee.home.homeDirectory = nixpkgsVersion.lib.mkForce "/Users/notthebee";
         })
       ];
     };
@@ -49,7 +49,9 @@ in
         ./modules/auto-aspm
         ./modules/mover
         inputs.agenix.nixosModules.default
-        ./users/fewzy       
+        # User module is now handled per-machine
+        (if machineHostname == "homelab" then ./users/fewzy else ./users/notthebee)
+        (if machineHostname == "homelab" then { } else (homeManagerCfg false [ ]))
       ] ++ extraModules;
     };
   };

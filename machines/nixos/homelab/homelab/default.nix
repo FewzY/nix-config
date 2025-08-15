@@ -7,11 +7,11 @@
 {
   # Storage paths for services
   systemd.tmpfiles.rules = [
-    "d /storage 0755 fewzy fewzy -"
-    "d /storage/media 0755 fewzy fewzy -"
-    "d /storage/downloads 0755 fewzy fewzy -"
-    "d /storage/documents 0755 fewzy fewzy -"
-    "d /storage/photos 0755 fewzy fewzy -"
+    "d /storage 0755 homelab homelab -"
+    "d /storage/media 0755 homelab homelab -"
+    "d /storage/downloads 0755 homelab homelab -"
+    "d /storage/documents 0755 homelab homelab -"
+    "d /storage/photos 0755 homelab homelab -"
   ];
 
   # Configure homelab settings
@@ -20,8 +20,8 @@
     enable = true;
     
     # Main user for services
-    user = "fewzy";
-    group = "fewzy";
+    user = "homelab";
+    group = "homelab";
     
     # Domain configuration
     baseDomain = "homelab.local";

@@ -19,6 +19,7 @@
           "podman"
           "input"
           "docker"
+          "homelab"  # Add access to homelab services
         ];
         group = "fewzy";
         openssh.authorizedKeys.keys = [
