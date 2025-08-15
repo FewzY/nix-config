@@ -86,7 +86,7 @@
   imports = [
     ./homelab  # Service configurations
     ./secrets  # Simplified secrets management
-    ./networks  # Network configuration for tailscale
+    ./networks.nix  # Network configuration for tailscale - need .nix extension
     ../../../hardware-configuration.nix 
  ];
 
