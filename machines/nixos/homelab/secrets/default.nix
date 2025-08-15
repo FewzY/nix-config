@@ -8,36 +8,55 @@
 {
   # Override all age secrets to use plain text dummy values
   age = {
-    identityPaths = [ "/etc/nixos/age/age.key" ];
+    identityPaths = lib.mkForce [ "/etc/nixos/age/age.key" ];
     
     secrets = {
       hashedUserPassword = {
         file = "${inputs.secrets}/hashedUserPassword.age";
-        mode = "0600";
+        mode = lib.mkForce "0600";
       };
       tailscaleAuthKey = {
         file = "${inputs.secrets}/tailscaleAuthKey.age";
-        mode = "0600";
+        mode = lib.mkForce "0600";
       };
       smtpPassword = {
         file = "${inputs.secrets}/smtpPassword.age";
-        mode = "0600";
+        mode = lib.mkForce "0600";
+        owner = lib.mkForce "root";
+        group = lib.mkForce "root";
       };
       duckDNSDomain = {
         file = "${inputs.secrets}/duckDNSDomain.age";
-        mode = "0600";
+        mode = lib.mkForce "0600";
       };
       duckDNSToken = {
         file = "${inputs.secrets}/duckDNSToken.age";
-        mode = "0600";
+        mode = lib.mkForce "0600";
       };
       tgNotifyCredentials = {
         file = "${inputs.secrets}/tgNotifyCredentials.age";
-        mode = "0600";
+        mode = lib.mkForce "0600";
       };
       adiosBotToken = {
         file = "${inputs.secrets}/adiosBotToken.age";
-        mode = "0600";
+        mode = lib.mkForce "0600";
+      };
+      # Add other secrets from _common/secrets
+      sambaPassword = {
+        file = "${inputs.secrets}/sambaPassword.age";
+        mode = lib.mkForce "0600";
+      };
+      cloudflareDnsApiCredentials = {
+        file = "${inputs.secrets}/cloudflareDnsApiCredentials.age";
+        mode = lib.mkForce "0600";
+      };
+      resticBackblazeEnv = {
+        file = "${inputs.secrets}/resticBackblazeEnv.age";
+        mode = lib.mkForce "0600";
+      };
+      gitIncludes = {
+        file = "${inputs.secrets}/gitIncludes.age";
+        mode = lib.mkForce "0600";
       };
     };
   };
